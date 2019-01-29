@@ -1,0 +1,25 @@
+<view>
+
+
+  <i-input value="{{username}}" title="联系人:" focus placeholder="请填写收货人姓名"  class='border' bind:change='usernameinput'/>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" >
+      <radio value="0" checked="{{sex==0?'true':''}}" color="#ffc640" /> 先生
+    </label>
+    <label class="radio" >
+      <radio value="1" checked="{{sex==1?'true':''}}" color="#ffc640" /> 女士
+    </label>
+  </radio-group>
+  <i-input value="{{userphone}}" title="手机号:" focus placeholder="请填写收货人手机号码" class='border'bind:change='userphoneinput'/>
+  <view class='chose-location' bindtap='gochose_location'>
+    <view class='chose-view1'>收货地址:</view>
+    <view class='chose-view2' wx:if="{{addressname==''}}">
+      <image class='image2' src='../../images/address.png'></image>点击选择
+      <image class='image1' src='../../images/跳转.png'></image>
+    </view>
+    <view class='chose-view2'wx:else>{{useraddress}}</view>
+  </view>
+  <i-input value="{{addressname}}" title="门牌号:" focus placeholder="详细地址，例：16号楼5层301室" class='border' bind:change='useraddressinput'/>
+<button class="location-btn" style='margin:15px;background-color:#ffc640;' bindtap='preserve1'>保存地址</button>
+<button class="location-btn" style='margin:15px;color:#ffc640;background-color:white;' bindtap='delete1'>删除地址</button>
+</view>

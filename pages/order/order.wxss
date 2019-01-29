@@ -1,0 +1,97 @@
+/* pages/my/my.wxss */
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page{
+  /* background-color: white; */
+  background-color:rgb(251, 251, 251);
+}
+.page__bd{
+    padding-bottom: 0;
+}
+/* 订单 */
+/* head */
+.ordercard{
+  background-color: white;
+/* background-color:rgb(251, 251, 251); */
+border-radius:13rpx;
+border:1rpx solid rgb(248, 248, 248);
+margin:6rpx 9rpx;
+margin-bottom: 30rpx;
+
+}
+.order-head{
+  border-top: 1rpx solid #ECECEC;
+
+display:inline-block;
+vertical-align: middle;
+width: 100%;
+}
+.order-head image{
+  height:87rpx;
+width:87rpx;
+display:inline-block;
+vertical-align: middle;
+margin: 15rpx;
+}
+.order-title{
+  display: inline-block;
+  width: 65%;
+}
+.order-name{
+  height: 16px;
+font-size: 30rpx;
+font-weight: 600;
+overflow: hidden;
+
+}
+.order-state{
+font-size: 24rpx;
+}
+/* list */
+.order-commoditylist {
+font-size: 28rpx;
+color: rgb(136, 130, 130);
+margin: 20rpx 20rpx 20rpx 117rpx;
+}
+.order-commoditylist text{
+ float:right;
+}
+.order-totalprice{
+  font-size: 28rpx;
+color: rgb(136, 130, 130);
+width: 98%;
+text-align: right;
+margin: 10rpx 20rpx 20rpx 0;
+}
+.textblack{
+font-weight: 600;
+color: black;
+}
+/* 再来一单 */
+.order-bt{
+  font-size: 28rpx;
+  width: 100%;
+  text-align: right;
+  padding: 10rpx 0rpx;
+  margin-bottom:20rpx;
+
+}
+.order-bt .span2{
+  border: 1px solid #FFD161(153, 149, 149);
+  text-align: center;
+  padding: 13rpx 40rpx;
+  margin-right: 20rpx;
+  background-color: #FFD161;
+  color: rgb(39, 38, 38);
+}
+.order-bt .span1{
+  border: 1px solid #FFD161;
+  text-align: center;
+  padding: 10rpx 40rpx;
+  margin-right: 20rpx;
+  background-color: white;
+  color: #FFD161;
+}

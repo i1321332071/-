@@ -1,0 +1,7 @@
+<view>
+<view class='aaa'>商家资质信息公示</view>
+<block>
+<image src='https://p1.meituan.net/xianfu/5b957f75cd62c431e9cb87faeed54b1c173338.jpg'></image>
+<image src='https://p1.meituan.net/xianfu/11f9d433beb5b3aec0a6effe9e074948442623.jpg'></image>
+</block>
+</view>

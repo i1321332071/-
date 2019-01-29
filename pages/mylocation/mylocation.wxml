@@ -1,0 +1,22 @@
+<view style='border-top: 1rpx solid #dddee1;'>
+  <block wx:for='{{address}}' wx:key='' wx:for-index='index'>
+    <view class='locationlist' bindtap='edit'  data-aid='{{item.addressid}}'>
+      <view class='view1'>
+        <view>
+          <span>{{item.useraddress}}</span>
+          <span style='margin-left:60rpx;'>{{item.addressname}}</span>
+        </view>
+        <view style='color:#8a8a8a;'>
+          <span>{{item.username}}</span>{{item.sex}}
+          <span style='margin-left:60rpx;'>{{item.userphone}}</span>
+        </view>
+      </view>
+      <view class='view2'>
+        <image src="../../images/写入.png"></image>
+      </view>
+    </view>
+  </block>
+  <view class='location-foot' bindtap='addlocation'>
+  <text>+</text><span>新增收货地址</span>
+  </view>
+</view>

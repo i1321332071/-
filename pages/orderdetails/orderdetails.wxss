@@ -1,0 +1,85 @@
+/* pages/orderdetails/orderdetails.wxss */
+
+.isetp-tetx {
+  float: right;
+  /* display: inline-block; */
+  margin-right: 50rpx;
+  font-weight: 500;
+  font-size: 23rpx;
+  color: #8a8a8a;
+}
+.orderdetails-head {
+  /* background-color: #ececec; */
+  height: 80rpx;
+  line-height: 3;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
+
+/* 店铺链接，名称 */
+.ordercard{
+  background-color: white;
+border-radius:15rpx;
+border:1rpx solid rgb(248, 248, 248);
+margin:6rpx 9rpx;
+}
+.orderdetails-title {
+  border-bottom: 1rpx solid #dddee1;
+  height: 80rpx;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
+.orderdetails-tview{
+border:1rpx solid #dddee1;
+border-radius:50%;
+float:right;
+vertical-align:middle;
+margin-top:17rpx;
+margin-right:3%;
+}
+.orderdetails-title image {
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+  padding: 10rpx;
+  /* float:right; */
+
+}
+.orderdetails-title span::after {
+  content: " ";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  position: relative;
+  top: 10rpx;
+  right: -20rpx;  
+  border-width: 2px 2px 0 0;
+  border-color: #dddee1;
+  border-style: solid;
+  transform: translateY(-50%) matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+}
+
+/* 订单循环 */
+
+.orderdetails-order {
+  display: inline-block;
+  font-size: 25rpx;
+  width: 97%;
+  padding:15rpx 0;
+  margin-left:3%;
+}
+
+.order-name {
+  display: inline-block;
+  width: 37%;
+  margin-left: 3%;
+}
+
+.order-count {
+  display: inline-block;
+  width: 34%;
+}
+
+.order-price {
+  display: inline-block;
+}

@@ -1,0 +1,173 @@
+/* pages/evaluated/evaluated.wxss */
+/* 遮幕层 */
+.mask {
+  z-index: -1;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(63, 62, 62, 0.6);
+  transition: opacity 0.3s linear, z-index 0.3s;
+}
+
+.mask-select {
+  opacity: 1;
+  z-index: 999;
+}
+.atention{
+   opacity: 1;
+  z-index:9999;
+background-color:white;
+height:25%;
+text-align:center;
+margin:55% 15%;
+border-radius:15rpx;
+}
+.atention-view1{
+line-height:7;
+font-size:30rpx;
+border-bottom:1rpx solid #ece9e9;
+
+}
+.atention-view2{
+padding-top:16rpx;
+color: rgb(250, 189, 45);
+}
+/* 评价 */
+.evaluated{
+background-color:rgb(251, 251, 251);
+}
+.evaluatedcard{
+background-color: white;
+border-radius:13rpx;
+border:1rpx solid rgb(248, 248, 248);
+margin:6rpx 9rpx;
+}
+/* title */
+.evaluated-title{
+margin-bottom: 10rpx;
+padding: 10rpx;
+border-bottom: 1rpx solid #e2dede;
+}
+.evaluated-title image{
+  width:70rpx;
+height:70rpx;
+vertical-align:middle;
+padding:10rpx;
+}
+.evaluated-title text{
+font-size:33rpx;
+}
+/* 星星 */
+.evaluated-star{
+  text-align: center;
+  margin: 25rpx 0rpx;
+}
+.evaluated-startext{
+  font-size: 32rpx;
+  color: #8a8a8a;
+}
+/* 标签 */
+.evaluated-label{
+  font-size: 32rpx;
+  color: #8a8a8a;
+  text-align: center;
+  margin: 25rpx 0;
+}
+.evaluated-labelbox{
+ border: 1rpx solid #e2dede;
+ border-radius: 10px;
+ padding: 5rpx;
+ margin:10rpx 5rpx;
+ width: 28%;
+ display: inline-block; 
+}
+.evaluated-activeyellow{
+
+color: #FFC640;
+border: 1rpx solid #FFC640;
+}
+/* 评论 */
+.evaluated-comment{
+ border: 1rpx solid #e2dede;
+ padding: 5rpx;
+ margin: 15rpx 15rpx;
+}
+.evaluated-incomment{
+  width:94%;
+margin:15rpx 3%;
+height:110rpx;
+}
+.evaluated-commenttext{
+text-align:right;
+font-size:28rpx;
+margin-right:5%;
+color:#8a8a8a;
+}
+/* 图片评论 */
+.evaluated-uploader{
+/* border: 1rpx solid #e2dede; */
+margin:15rpx 15rpx;
+padding: 15rpx 0rpx;
+}
+.evaluated-uploader-img {
+/* border: 1rpx solid red; */
+height: 130rpx;
+width: 20%;
+display:inline-block;
+margin: 0rpx 10rpx;
+}
+.evaluated-uploader-img image{
+vertical-align: middle;
+height: 100%;
+width: 100%;
+display:inline-block;
+}
+.evaluated-uploader-input{
+vertical-align: middle;
+border: 1rpx solid #e2dede;
+height: 130rpx;
+width: 20%;
+display:inline-block;
+font-size:24rpx;
+text-align:center;
+color: #e2dede;
+}
+/* 点赞 */
+.evaluated-thumbs{
+  font-size: 37rpx;
+  color: #8a8a8a;
+  margin:15rpx 20rpx;
+  border-top: 1rpx solid #e2dede;
+  padding:25rpx 0rpx;
+}
+.evaluated-thumbsname{
+display: inline-block;
+color: black;
+width: 60%;
+}
+.evaluated-thumbslogo{
+display: inline-block;
+
+}
+.evaluated-logo{
+  font-size: 24rpx;
+display: inline-block;
+padding:5rpx 20rpx;
+border:1rpx solid #e2dede;
+margin-right:20rpx;
+border-radius:28rpx;
+}
+.evaluated-logo image{
+width:33rpx;
+height:33rpx;
+vertical-align:middle;
+}
+/* 提交 */
+.evaluated-bt{
+/* background-color:#FFC640; */
+margin-top:45rpx;
+color:#FFC640;
+}

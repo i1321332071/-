@@ -1,0 +1,134 @@
+<import src="../../common/sort_list.wxml" />
+<!-- offline -->
+<view class='offline' wx:if='{{offline}}'>
+  你没网
+  <button class='offline-bt' bindtap='onLoad'>重新加载</button>
+  </view>
+<!-- offline结束 -->
+<!-- 隐藏的页面 -->
+<view id='mask1'>
+  <view hidden="{{hidden1}}" class='mask' bindtap='offmask1'>
+    <template is="sort_list" data="{{selected,sortSelected}}" />
+    <view class='masklist'>
+      <block wx:for="{{maskList1}}" wx:key=''>
+        <view class="masklist1" bindtap='setsortSelected' data-index='{{index}}'>{{item.sort}}</view>
+      </block>
+    </view>
+  </view>
+</view>
+<view id='mask2'>
+  <view hidden="{{hidden2}}" class='mask' bindtap='offmask2'>
+  </view>
+  <view hidden="{{hidden2}}" class='mask_'>
+    <template is="sort_list" data="{{selected,sortSelected,conditioncount}}" />
+    <view class='masklist'>
+      <scroll-view scroll-y="true" class='mask-firstlist'>
+        <!-- 商家特色 -->
+        <view class='mask-characteristic'>
+          <view class='mask-title'>商家特色(可多选)</view>
+          <block wx:for="{{characteristicList}}" wx:key='' >
+            <view class="mask-box {{item.flag == true?'mask-boxselected':''}}" data-cname='{{item.name}}' data-cid='{{item.characteristicList_num}}' bindtap='characteristic_select'>
+            {{item.name}}
+            </view>
+          </block>
+        </view>
+        <!-- 人均价 -->
+        <view class='mask-aveprice'>
+          <view class='mask-title'>人均价</view>
+          <block wx:for="{{avepricelist}}" wx:key=''>
+            <view class="mask-box {{item.flag == true?'mask-boxselected':''}}" data-aname='{{item.name}}' data-aid='{{item.avepricelist_num}}' bindtap='aveprice_select'>{{item.name}}</view>
+          </block>
+        </view>
+        <!-- 优惠活动 -->
+        <view class='mask-discount'>
+          <view class='mask-title'>优惠活动(可多选)</view>
+          <bolck wx:for="{{discountlist}}" wx:key="">
+            <view class="mask-box {{item.flag == true?'mask-boxselected':''}}" data-dname='{{item.name}}' data-did='{{item.discountnum}}' bindtap='discount_select'>{{item.name}}</view>
+          </bolck>
+        </view>
+      </scroll-view>
+      <view class='mask-footer'>
+        <view class='mask-footbt1' bindtap='clear'>清空</view>
+        <view class='mask-icon' style='top:{{icon_top-6}}px' wx:if="{{conditioncount>0}}">{{conditioncount}}</view>
+        <view class='mask-footbt2' bindtap='offmask_'>完成</view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 隐藏的页面结束 -->
+<scroll-view class="home">
+  <!-- head -->
+  <view class="head-location" bindtap='golocation' id='scroll'>
+    <image src="../../images/位置.png" class="head-location-icon" />
+    <span class="head-location-text">{{addressname}}</span>
+    <image class='head-location-icon2' src="../../images/跳转.png"></image>
+  </view>
+  <!-- <icon type='search'></icon> -->
+  <view class='head-search' bindtap='gosearch'>
+    <image src='../../images/搜索.png'></image>
+    <text class='searchtext'>麻辣烫</text>
+  </view>
+  
+  <!-- 轮播 -->
+  <swiper indicator-dots='true' indicator-color="rgba(228,228,228,1)" indicator-active-color="#FECA49" class='home-swiper' autoplay='true'>
+    <block wx:for="{{swiperList}}" wx:key=''>
+      <swiper-item>
+        <!-- <block wx:for='{{item}}' wx:key=''>
+          <view class='swiper'>
+            <image src='{{item.src}}'></image>
+            <view class='swiper-text'>{{item.name}}</view>
+          </view>
+        </block> -->
+        <image src='{{item.src}}' style='width:100%;height:100%;border-radius:20rpx;'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='bground'></view>
+  <!-- list -->
+  <view>
+    <view class='sort-title'>
+      <text>附近商家</text>
+    </view>
+    <!-- 导航 -->
+    <view>
+      <template is="sort_list" data="{{selected,sortSelected,conditioncount}}" />
+    </view>
+    <!-- list -->
+    <view>
+
+      <block wx:for="{{restaurant}}" wx:key="">
+        <view class='restaurantsList' bindtap='gostore' data-storeid='{{item.storeid}}' data-storename='{{item.name}}'>
+          <view class="restaurants-info-1">
+            <image src="{{item.src}}" class="restaurants-image"></image>
+          </view>
+          <view class="restaurants-info-2">
+            <view class="restaurants-info-name">{{item.name}}</view>
+            <view class="restaurants-info-rating">
+              <view class="restaurants-info-rating-stars">
+              <i-cell>
+                  <i-rate disabled="{{true}}" value="{{item.pingfen}}" size="10">
+                  </i-rate>
+                </i-cell>
+              </view>
+              <view class="restaurants-info-rating-sales">月售 {{item.sales}}单</view>
+            </view>
+            <view class="restaurants-info-price">
+              起送 {{item.qisong}}¥ | 配送 {{item.peisong}}¥
+            </view>
+            <view class='restaurants-info-style'>
+              <image src='../../images/餐厅.png'></image>{{item.info_style}}</view>
+           
+          </view>
+          
+          <view class="restaurants-info-3">{{item.juli}}|{{item.pingjun}}分钟</view>
+          
+        </view>
+         <view class='restaurants-info-discount'>
+              <block wx:for="{{item.youhui}}" wx:for-item='one'wx:key="">
+              <span>{{one.name}}</span>
+              </block>
+            </view>
+      </block>
+    </view>
+  </view>
+</scroll-view>

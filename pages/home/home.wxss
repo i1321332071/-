@@ -1,0 +1,310 @@
+/**index.wxss**/
+/* commom */
+/* .is_checked{
+ border: 1rpx solid #FE0002 ;
+  color: #FE0002 ;
+  background: #fff;
+  position: absolute;
+	z-index: 999999;
+ top: 0rpx;
+  width: 100%;
+}
+.normal{
+  border: none;
+  color: #333;
+  background: #F0F1EC;
+} */
+.offline{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 99999999999999999;
+  background-color: #fcfcfc;
+  text-align:center;
+vertical-align:middle;
+padding-top:250px;
+}
+.offline-bt{
+  width:30%;
+font-size:28rpx;
+background-color: #FFD161;
+color: white;
+margin-top: 50px;
+}
+.mask{
+  width:100%;
+  height:100%;
+  position: fixed;
+  z-index:999;
+  background-color:rgba(15, 15, 26, 0.7);
+}
+.mask_{
+  position: fixed;
+  z-index:9999;
+}
+.masklist{
+background-color: white;
+font-size:25rpx;
+
+}
+/* mask1 */
+.masklist1{
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-left: 30rpx;
+  /* z-index: 99999; */
+}
+/* mask2 */
+.mask-firstlist{
+   height: 550rpx;
+  overflow: hidden;
+}
+.mask-title{
+color: #4e4b4b;
+padding: 15rpx 15rpx;
+}
+.mask-box{
+  display: inline-block;
+  width: 32%;
+  color: #6A6A6A;
+  text-align: center;
+  border-radius: 5rpx;
+  background-color: rgb(250, 245, 245);
+  margin: 10rpx 5rpx;
+  padding: 10rpx 0;
+}
+.mask-boxselected{
+  background: #FFFBF1;
+  border-color: #FFE9B7;
+  color: rgb(231, 194, 119);
+}
+.mask-footer{
+   height: 90rpx;
+  display: flex;
+  border-top: 1rpx solid #ECECEC;
+}
+.mask-footbt1{
+  flex: 1;
+  align-items: center;
+  text-align: center;
+  font-size: 30rpx;
+  line-height: 90rpx;
+  padding-left: 30rpx;
+}
+.mask-icon{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  background-color: red;
+  color: white;
+  border-radius:50%;
+text-align:center;
+right:48%;
+z-index:99999;
+
+}
+.mask-footbt2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  width: 50%;
+  background: #FFD161; 
+  position: relative;
+  
+}
+.sort-list{
+  justify-content: space-around;
+  display: flex;
+  background: white;
+  width: 100%;
+  height: 80rpx;
+  font-size: 27rpx;
+  color: rgb(48, 47, 47);
+  align-content: center;
+  
+}
+.sort{
+  text-align: center;
+  margin: auto 0;
+  height: 30rpx;
+  width: 20%;
+  line-height: 30rpx;
+  /* border-right: 1rpx solid #ECECEC;  */
+  flex: 1;
+  font-size: 25rpx;
+}
+.sort-active{
+  color: black;
+  font-weight: 800;
+}
+/* location */
+.head-location-icon{
+  height: 30rpx;
+  width: 30rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
+}
+.head-location-text{
+  left: 55rpx;
+  top: 9rpx;
+  height: 30rpx;
+  width: 220rpx;
+  
+}
+.head-location{
+  position: relative;
+  font-size: 25rpx;
+  padding: 10rpx 15rpx;
+  margin: 10rpx;
+  height: 40rpx;
+  /* background: #B38B2D; */
+  color:black;
+  border-radius: 20rpx;
+}
+.head-location-icon2{
+height:20rpx;
+width:20rpx;
+vertical-align:middle;
+margin-left:10rpx;
+
+}
+/* search */
+.head-search{
+  background-color:#ECECEC;
+border-radius:15rpx;
+margin:1rpx 10rpx;
+height: 58rpx;
+
+
+}
+.head-search image{
+  width: 30rpx;
+  height: 30rpx;
+  margin:0 15rpx;
+vertical-align:middle;
+}
+.head-search .searchtext{
+color:#8a8a8a;
+font-size:30rpx;
+}
+/* swiper */
+.home-swiper{
+  padding:20rpx;
+font-size:25rpx;
+height:350rpx;
+text-align:center;
+
+}
+.swiper{
+  display: inline-block;
+  text-align: center;
+  padding:10rpx 20rpx;
+
+}
+.swiper image{
+height: 90rpx;
+width: 90rpx;
+}
+/* 导航sort */
+.sort-title{
+  height: 63rpx;
+  line-height: 60rpx;
+  font-size: 31rpx;
+  font-weight: 600;
+  padding:5rpx 15rpx;
+}
+/* list */
+.restaurantsList{
+  height:170rpx;
+font-size: 25rpx;
+  display: flex;
+  width: 100%;
+  padding: 10rpx 0;   
+  /* border-bottom: 1rpx solid #ECECEC; */
+  /* color: #6D6D6D; */
+  color: black;
+  justify-content: space-between;
+}
+.restaurants-info-1{
+display: inline-block;
+vertical-align:middle;
+line-height:5;
+width: 20%;
+margin-right: 2rpx;
+}
+.restaurants-info-2{
+  display: inline-block;
+  width: 45%;
+}
+ .restaurants-info-name{
+ font-size: 28rpx;
+ font-weight: 600;
+ height: 15%;
+ color: #515151;
+ /* background-color: red; */
+}
+.restaurants-info-rating{
+/* background-color: yellow; */
+}
+.restaurants-info-price{
+/* background-color: red; */
+ padding: 4rpx;
+ color:#707070;
+}
+.restaurants-info-style{
+padding: 4rpx;
+color:#707070;
+font-size: 21rpx;
+font-weight: 200;
+}
+.restaurants-info-discount{
+  padding: 4rpx;
+  font-size: 21rpx;
+font-weight: 200;
+margin-left:23%;
+
+}
+.restaurants-info-rating-stars{
+display: inline-block;
+color: rgb(235, 235, 67);
+margin-right: 15rpx;
+vertical-align:super;
+height:30rpx;
+
+}
+.restaurants-info-rating-sales{
+  display: inline-block;
+  color:#707070;
+}
+
+.restaurants-info-style image{
+  width: 25rpx;
+  height: 25rpx;
+  vertical-align: middle;
+  margin-right: 10rpx;
+}
+.restaurants-info-discount span{
+  border: 1rpx solid #8a8a8a;
+  border-radius: 8rpx;
+  color: red;
+  margin-right: 8rpx;
+  padding: 2rpx;
+}
+.restaurants-info-3{
+  line-height: 6;
+  display: inline-block;
+  text-align: right;
+  width: 25%;
+  margin-right: 20rpx;
+
+}
+.restaurants-image{
+ width:148rpx;
+height:100rpx;
+vertical-align:middle;
+padding:2rpx;
+
+}

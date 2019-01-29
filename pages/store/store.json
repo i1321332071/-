@@ -1,0 +1,8 @@
+{
+      "navigationBarTextStyle": "white",
+      "navigationBarBackgroundColor": "#201f1f",
+      "usingComponents": {
+        "i-rate": "../../dist/rate/index"
+      }
+      
+}

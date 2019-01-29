@@ -1,0 +1,74 @@
+<!--pages/evaluated/evaluated.wxml-->
+<view class='evaluated'>
+  <!-- 评价卡 -->
+  <view class='evaluatedcard'>
+    <!-- 头部 -->
+    <view class='evaluated-title'>
+      <image src='{{evaluated.src}}'></image>
+      <span>{{evaluated.storename}}</span>
+    </view>
+    <!-- 星星数字 -->
+    <view class='evaluated-star'>
+      <i-cell>
+        <view class='evaluated-startext'>{{startext[starIndex]}}</view>
+        <i-rate bind:change="onChange" value="{{starIndex}}" size="32">
+
+        </i-rate>
+      </i-cell>
+    </view>
+    <!-- 标签 -->
+    <view class='evaluated-label'>
+      <view style='margin:0 10%;'>
+        <bolck wx:for='{{labellist}}' wx:key=''>
+          <view class="evaluated-labelbox {{item.flag==true?'evaluated-activeyellow':''}}" data-index='{{index}}' bindtap='chooselabel'>
+            {{item.text}}
+          </view>
+        </bolck>
+      </view>
+    </view>
+    <!-- 评价 -->
+    <view class='evaluated-comment'>
+    <view></view>
+      <textarea  class='evaluated-incomment' maxlength="36" bindinput='evcomment'></textarea>
+      <view class='evaluated-commenttext'>至少输入8个字的评价</view>
+    </view>
+    <!-- 图片上传 -->
+    <view class='evaluated-uploader'>
+      <block wx:for="{{files}}" wx:key="*this">
+        <view class='evaluated-uploader-img' bindtap="previewImage" id="{{item}}">
+          <image src="{{item}}" mode="aspectFill" />
+        </view>
+      </block>
+      <view class='evaluated-uploader-input' bindtap="chooseImage">
+        <image src='../../images/相机.png' style='width:61%;height:66%'></image>
+        <view style='margin-top:-17rpx;'>添加图片</view>
+      </view>
+    </view>
+    <!-- 列表点赞 -->
+    <view class='evaluated-thumbs'>
+      <block wx:for='{{evaluated.list}}' wx:key=''>
+        <view class='evaluated-thumbsname'>{{item.name}}</view>
+        <view class='evaluated-thumbslogo'>
+          <view class="evaluated-logo {{item.yes==index?'evaluated-activeyellow':''}} " data-index='{{index}}' bindtap='chooseyes'>
+            <image src='../../images/赞.png'></image>
+            <span style="vertical-align:middle;">赞</span>
+          </view>
+          <view class="evaluated-logo {{item.no==index?'evaluated-activeyellow':''}} " data-index='{{index}}' bindtap='chooseno'>
+            <image src='../../images/踩.png'></image>
+            <span style="vertical-align:middle;">踩</span>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 提交 -->
+  <view>
+    <button class='evaluated-bt' bindtap='submit'>提交</button>
+  </view>
+</view>
+<view class="mask {{submit==true?'mask-select':''}}">
+  <view class='atention'>
+    <view class='atention-view1'>感谢您的评价</view>
+    <view class='atention-view2' bindtap='goorder'>确认</view>
+  </view>
+</view>

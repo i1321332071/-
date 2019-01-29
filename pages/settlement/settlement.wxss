@@ -1,0 +1,30 @@
+/* pages/settlement/settlement.wxss */
+.view1{
+  display: inline-block;
+  margin-right: 15rpx;
+  width: 30%;
+}
+.view2{
+  display: inline-block;
+  margin-right: 15rpx;
+  width: 30%;
+}
+.view3{
+  display: inline-block;
+  width: 30%;
+}
+.bt{
+  position: fixed;
+  background-color: #19be6b;
+  height: 9%;
+  width: 100%;
+  bottom: 0px;
+  z-index: 99999999;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+.bt_view{
+  display:inline-block;
+line-height:3;
+}

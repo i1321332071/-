@@ -1,0 +1,438 @@
+<!--pages/store/store.wxml-->
+<view class='offline' wx:if='{{offline}}'>
+  你没网
+  <button class='offline-bt' bindtap='onLoad'>重新加载</button>
+  </view>
+<scroll-view style='height:{{winheight}}px'>
+  <!-- 底部栏 -->
+  <view hidden='{{swiperid==0?false:true}}' class="store-foot {{totalprice>=baseprice?'foot-select':''}}">
+    <view style='display:inline-block;width:72%;background-color: rgb(66, 68, 67);height:100%;' bindtap='switch_shop'>
+      <image src='../../images/购物车_1.png' class='store-img1' wx:if="{{goods.length<1}}"></image>
+      <image src='../../images/购物车.png' class='store-img1' wx:if="{{goods.length>=1}}"></image>
+      <view class="store-text {{goods.length<1?'price-none':''}}">
+        <view style='font-size:37rpx;' wx:if="{{goods.length>=1}}">￥{{totalprice}}</view>
+        免配送费|支持自取
+      </view>
+    </view>
+    <!-- <view class='store-bt'><text>20元起送</text></view> -->
+    <view class='store-bt' bindtap='settlement'>
+      <text wx:if="{{goods.length<1}}">{{baseprice}}元起送</text>
+      <block wx:if="{{goods.length>=1}}">
+        <text wx:if="{{totalprice<baseprice}}">差{{disparity}}元起送</text>
+        <text wx:if="{{totalprice>=baseprice}}">去结算</text>
+      </block>
+    </view>
+  </view>
+  <!-- 底部栏结束 -->
+  <!-- 遮幕层 -->
+  <view class="mask {{shopcar_switch==false?'mask-select':''}} " bindtap='close_mask'></view>
+  <!-- 遮幕层结束 -->
+  <!-- 购物车栏 -->
+  <view class='store-shopcar' hidden='{{shopcar_switch}}'>
+    <view class='shopcar-title'>
+      包装费5 元
+      <span bindtap='clear_shopcar'>
+        <image src='../../images/删除.png'></image>清空购物车</span>
+    </view>
+    <scroll-view class='shopcar-scroll' style='height:{{shopcar_height}}px' scroll-y='true'>
+      <block wx:for='{{goods}}' wx:key=''>
+        <view class='shopcar-list'>
+          <view class='view1'>{{item.name}}</view>
+          <view class='view2'>￥{{item.unitprice}}</view>
+          <view class='view3'>
+            <text class='join' data-goodsid='{{item.id}}' data-goodsprice='{{item.price}}' bindtap='join_shopcar'>+</text>
+            <text class='count'>{{item.count}}</text>
+            <text class='delete' data-goodsid='{{item.id}}' data-goodsprice='{{item.price}}' bindtap='delete_shopcar'>-</text>
+          </view>
+        </view>
+      </block>
+      <block wx:if='{{goods.length<1}}'>
+        <view style='text-align:center;padding-top:50rpx;'>
+          购物车空空如也~~，赶紧去购买吧(∩_∩)
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <!-- 购物车栏结束 -->
+  <!-- 商品详情弹窗 -->
+  <view class="store-detail {{detail_switch==true?'store-detailselect':''}}">
+    <view class='store-detail1'>
+      <view class='detail-title'>
+        <span>{{operation.name}}</span>
+      </view>
+      <view class='detail-image'>
+        <image src='{{operation.img}}'></image>
+      </view>
+      <view class='detail-sell'>
+        <span>月售66</span>
+        <span style='margin-left:20rpx;'>赞26</span>
+      </view>
+      <view class='detail-discount'>
+        <span>4.75折</span>
+        <span style='margin-left:20rpx;'>不限购</span>
+      </view>
+      <view class='detail-detail'>传说中好吃，美味，又实惠的{{operation.name}}</view>
+      <view class='detail-operation'>
+        ￥{{operation.price}}
+        <view class='operation-view1' wx:if='{{operation.count<1}}' bindtap='detail_push'>加入购物车</view>
+        <view class='operation-view2' wx:else>
+          <text class='join' bindtap='detail_join'>+</text>
+          <text class='count'>{{operation.count}}</text>
+          <text class='delete' bindtap='detail_delete'>-</text>
+        </view>
+      </view>
+      <view style='text-align:center;margin-top:50rpx;'>
+        <span class='close-detail' bindtap='close_detail'>×</span>
+      </view>
+    </view>
+
+  </view>
+  <!-- 弹窗结束 -->
+  <!-- 头部，店铺logo -->
+  <view class='store-title'>
+    <image class='store-titleimage' src='{{restaurant.src}}' style='width:100rpx;height:100rpx;'></image>
+    <view class='store-massage'>
+      <view>
+        <image src='../../images/时间.png' style='vertical-align:middle;'></image>
+        <span style='vertical-align:middle;'>配送约{{restaurant.pingjun}}分钟|</span>
+        <image src='../../images/闪电.png' style='vertical-align:middle;'></image>
+        <span style='vertical-align:middle;'>极速退款</span>
+      </view>
+      <view>本店向消费者郑重承诺：货真价实，童叟无欺</view>
+      <view>
+        <view class='store-titlebox'>
+          <!-- <span>满30减10</span>
+          <span>满30减10</span>
+          <span>满30减10</span> -->
+           <block wx:for="{{restaurant.youhui}}" wx:for-item='one'wx:key="">
+              <span>{{one.name}}</span>
+              </block>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 卡券 -->
+  <view style='height:72rpx;'>
+    <block>
+      <view class='store-coupon'>
+        <view class='store-couponbox'>￥3</view>
+        <view class='store-couponbox1'>已领</view>
+      </view>
+      <view class='store-coupon'>
+        <view class='store-couponbox'>￥5</view>
+        <view class='store-couponbox1'>已领</view>
+      </view>
+    </block>
+  </view>
+  <!-- 导航：店铺首页，评价，信息 ；搜索框-->
+  <view class='store-nav'>
+    <view style='width:80%;display:inline-block;height:80rpx;'>
+      <block wx:for='{{navlist}}' wx:key=''>
+        <view id='{{index}}' class='store-navbox' bindtap='tabclick'>{{item.text}}</view>
+      </block>
+      <view class='store-underline' style="left: 10%; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <!-- 搜索框 -->
+    <view class='store-navsearch'>
+      <image src='../../images/搜索.png'></image>
+      <text>搜索</text>
+    </view>
+  </view>
+  <!-- 商家，评价，菜单的详细页面 -->
+  <view>
+    <swiper current="{{swiperid}}" style="height:{{winheight}}px" bindchange='swiperchose'>
+      <!--菜单页面开始  -->
+      <swiper-item>
+        <view class='store-middle'>
+          <!-- 左侧菜单开始 -->
+          <scroll-view class='store-menu' style="height:920rpx" scroll-y='true'>
+            <view wx:for='{{menulist}}' wx:key="{{item.id}}" data-id="{{item.id}}" bindtap='clickMenu' class="menu-item {{curId == item.id ? 'menu-active': ''}}">
+              <text>{{item.name}}</text>
+            </view>
+            <view style='height:216rpx'></view>
+          </scroll-view>
+          <!-- 左侧菜单结束 -->
+          <!-- 右侧展示页开始 -->
+          <view style='padding:10rpx 22%;font-size:31rpx;'>{{menu_name}}</view>
+          <scroll-view class='store-goods' scroll-y='true' style="height:920rpx" scroll-with-animation="true" scroll-into-view="menu_{{toView}}" bindscroll='scroll'>
+            <!-- 商品循环开始-->
+            <view class='store-orderlist' id='menu_{{item.id}}' wx:for='{{foodlist}}' wx:key='{{item.id}}'>
+              <!-- 商品图片 -->
+              <block wx:for='{{item.food}}' wx:for-item='one' wx:key='{{one.id}}'>
+                <view style='height:208rpx'>
+                  <view style='display:inline-block;'>
+                    <image class='image1' src='{{one.img}}' bindtap='detailswitch' data-goodsid='{{one.id}}'></image>
+                  </view>
+                  <!-- 商品描述 -->
+                  <view class='store-order' style=''>
+                    <view class='goods-box1'>{{one.name}}</view>
+                    <view class='goods-box2' style='font-size:18rpx;color:#707070;'>店家主打推荐
+                      <span>月售666，赞66</span>
+                    </view>
+                    <view class='goods-box3' style='color:red;font-weight:600'>
+                      <view>￥{{one.price}}
+                        <text class='text1'>￥32.5</text>
+                        <text class='join' bindtap='join' data-goodsid='{{one.id}}' data-goodsname='{{one.name}}' data-price='{{one.price}}'>+</text>
+                        <text class='count' hidden='{{one.flag}}'>{{one.count}}</text>
+                        <text class='delete' hidden='{{one.flag}}' bindtap='delete' data-goodsid='{{one.id}}' data-goodsname='{{one.name}}' data-price='{{one.price}}'>-</text>
+                      </view>
+                      <span>
+                        <image src='../../images/标签.png'></image>
+                        <text>4.57折</text>
+                        <text>不限购</text>
+                      </span>
+                    </view>
+                  </view>
+                </view>
+              </block>
+            </view>
+            <!--  商品循环结束 -->
+            <view style='height:216rpx'></view>
+          </scroll-view>
+          <!-- 右侧展示页结束 -->
+        </view>
+      </swiper-item>
+      <!-- 评价页开始 -->
+      <swiper-item>
+        <scroll-view class='item2' scroll-y='true' style='height:{{item2_height-57}}px'>
+      
+          <!-- 评分 -->
+          <view class='item-head'>
+            <view class='item-view1'>
+              <view style='font-size:70rpx;color: #ffc640;'>4.4</view>
+              <view>商家评分</view>
+            </view>
+            <view class='item-view2'>
+              <view>
+                <view style='vertical-align:middle;display:inline-block;margin-top:10rpx;margin-right:10rpx;'>口味</view>
+                <i-cell>
+                  <i-rate disabled="{{true}}" value="{{starIndex}}" size="15">
+                    {{starIndex}}
+                  </i-rate>
+                </i-cell>
+              </view>
+              <view>
+                <view style='vertical-align:middle;display:inline-block;margin-top:10rpx;margin-right:10rpx;'>包装</view>
+                <i-cell>
+                  <i-rate disabled="{{true}}" value="{{starIndex}}" size="15">
+                    {{starIndex}}
+                  </i-rate>
+                </i-cell>
+              </view>
+            </view>
+            <view class='item-view3'>
+              <view style='font-size:70rpx;'>4.9</view>
+              <view>配送评分</view>
+            </view>
+          </view>
+          <!-- 评分结束 -->
+          <!-- 评价 -->
+          <view class='item-evaluate'>
+            <view class='box'>全部(9999)</view>
+            <block>
+              <view class='box'>有图评价(210)</view>
+              <view class='box'>好评(88)</view>
+              <view class='box'>差评(52)</view>
+              <view class='box'>味道赞(6)</view>
+              <view class='box'>包装好(93)</view>
+              <view class='box'>分量足(55)</view>
+              <view class='box'>满意(46)</view>
+              <view class='box'>服务好(68)</view>
+              <view class='box'>实惠(120)</view>
+            </block>
+          </view>
+          <!-- 评价结束 -->
+          <!-- 图评 -->
+          <view style='margin-top: 20rpx;'>
+            <block>
+              <view class='item-imgevaluate'>
+                <!-- 头像，用户名，星星，送达时间，时间 -->
+                <view class='imgevaluate-title'>
+                  <image src='../../images/my-selected.png'></image>
+                  <view class='etitle-view'>
+                    <view class='etitle-view1'>tongxiaoqiang</view>
+                    <view class='etitle-view2'>
+                      <i-cell style='vertical-align:super;'>
+                        <i-rate disabled="{{true}}" size="10" value="{{2}}">
+                          
+                        </i-rate>
+                      </i-cell>
+                      <span style='margin-left:10rpx;'>45分钟送达</span>
+                    </view>
+                  </view>
+                  <view style='float:right;'>2018.11.16</view>
+                </view>
+                <!-- 评语 -->
+                <view class='imgevaluate-content'>
+                  我觉得东西不咋的,送的还慢
+                  <view class="{{2>1?'content-img1':'content-img2'}}" style="margin-top:15rpx;">
+                    <block>
+                      <image src='https://p0.meituan.net/210.0/xianfu/3f5ebe7149467b36f49c6053703e2981228471.jpg'></image>
+                      <image src='https://p1.meituan.net/210.0/xianfu/0553168d22de8bb90e2e4eeb6032faee503638.jpg'></image>
+                      <image src='https://p1.meituan.net/210.0/xianfu/8ad1331adbce9d9335367b1e35162be6385503.jpg'></image>
+                    </block>
+                  </view>
+                </view>
+                <!-- 标签 -->
+                <view class='content-logo'>
+                  <image src='../../images/赞.png'></image>
+                  <block>
+                    金枪鱼罐头
+                  </block>
+                </view>
+                <!-- 店家回复 -->
+                <view class='content-comment'>
+                  店家回复:您说的都对,您说的都对,您说的都对,您说的都对
+                </view>
+              </view>
+            </block>
+
+            <block>
+              <view class='item-imgevaluate'>
+                <!-- 头像，用户名，星星，送达时间，时间 -->
+                <view class='imgevaluate-title'>
+                  <image src='../../images/my-selected.png'></image>
+                  <view class='etitle-view'>
+                    <view class='etitle-view1'>tongxiaoqiang</view>
+                    <view class='etitle-view2'>
+                      <i-cell style='vertical-align:super;'>
+                        <i-rate disabled="{{true}}" size="10">
+                          {{starIndex}}
+                        </i-rate>
+                      </i-cell>
+                      <span style='margin-left:10rpx;'>15分钟送达</span>
+                    </view>
+                  </view>
+                  <view style='float:right;'>2018.11.16</view>
+                </view>
+                <!-- 评语 -->
+                <view class='imgevaluate-content'>
+                  我觉得东西不咋的
+                  <view class="{{1>1?'content-img1':'content-img2'}}" style="margin-top:15rpx;">
+                    <block>
+                      <image src='../../images/图评.jpg'></image>
+
+                    </block>
+                  </view>
+                </view>
+                <!-- 标签 -->
+                <view class='content-logo'>
+                  <image src='../../images/赞.png'></image>
+                  <block>
+                    小炒肉
+                  </block>
+                </view>
+                <!-- 店家回复 -->
+                <view class='content-comment'>
+                  店家回复:您说的都对,您说的都对,您说的都对,您说的都对
+                </view>
+              </view>
+            </block>
+
+            <block>
+              <view class='item-imgevaluate'>
+                <!-- 头像，用户名，星星，送达时间，时间 -->
+                <view class='imgevaluate-title'>
+                  <image src='../../images/my-selected.png'></image>
+                  <view class='etitle-view'>
+                    <view class='etitle-view1'>tongxiaoqiang</view>
+                    <view class='etitle-view2'>
+                      <i-cell style='vertical-align:super;'>
+                        <i-rate disabled="{{true}}" size="10">
+                          {{starIndex}}
+                        </i-rate>
+                      </i-cell>
+                      <span style='margin-left:10rpx;'>15分钟送达</span>
+                    </view>
+                  </view>
+                  <view style='float:right;'>2018.11.16</view>
+                </view>
+                <!-- 评语 -->
+                <view class='imgevaluate-content'>
+                  我觉得东西不咋的
+                  <view class="{{2>1?'content-img1':'content-img2'}}" style="margin-top:15rpx;">
+                    <block>
+                      <image src='../../images/图评.jpg'></image>
+                      <image src='../../images/图评.jpg'></image>
+                      <image src='../../images/图评.jpg'></image>
+                    </block>
+                  </view>
+                </view>
+                <!-- 标签 -->
+                <view class='content-logo'>
+                  <image src='../../images/赞.png'></image>
+                  <block>
+                    金枪鱼罐头
+                  </block>
+                </view>
+                <!-- 店家回复 -->
+                <view class='content-comment'>
+                  店家回复:您说的都对,您说的都对,您说的都对,您说的都对
+                </view>
+              </view>
+            </block>
+            <view style='height:20px;background-color:white;'></view>
+
+          </view>
+          <!-- 图评结束 -->
+        </scroll-view>
+      </swiper-item>
+      <!-- 商家页开始 -->
+      <swiper-item>
+        <view class='item3'>
+          <!-- 地址，联系 -->
+          <view style='padding-top:21rpx;'>
+          <view class='item3-list'>
+            <image src='../../images/store_地址.png'></image>
+            江夏白云尚城45号
+            <view class='list-log'>
+              <image src='../../images/store_电话.png' bindtap='item3_actionsheet'></image>
+            </view>
+          </view>
+          </view>
+          <!-- 档案 -->
+          <view style='margin-top:21rpx;'>
+          <view class='item3-list'>
+            <image src='../../images/store_档案.png'></image>
+            查看食品安全档案
+            <view class='list-log'>
+              <image src='../../images/跳转.png' bindtap='goarchives'>
+              
+              </image>
+            </view>
+          </view>
+          </view>
+          <view style='margin-top:21rpx;'>
+          <view class='item3-list'>
+            <view style='padding-bottom:20rpx;border-bottom:1rpx solid #f3eded'>
+              <image src='../../images/store_配送.png'></image>配送服务:由美团配送提供服务
+            </view>
+            <view style='padding-top:20rpx;'>
+              <image src='../../images/store_时间.png'></image>配送时间:09:10-21:30
+            </view>
+          </view>
+          </view>
+          <!-- 商家服务 -->
+          <view style='margin-top:21rpx;'>
+          <view class='item3-list'>
+            <view style='padding-bottom:20rpx;border-bottom:1rpx solid #f3eded'>
+              <image src='../../images/store_商家.png'></image>
+              商家服务:
+              <span class='font-logo1'>订</span>跨天预定
+              <span class='font-logo1'>取</span>到店自取
+            </view>
+            <view>
+           <view style='padding-bottom:20rpx;padding-top:20rpx;'><span class='font-logo2' style='background-color:red;'>减</span>满20减17(在线支付专享)</view>
+           <view style='padding-bottom:20rpx;'><span class='font-logo2' style='background-color:rgb(240, 130, 216);'>折</span>折扣商品2.7折起(在线支付专享)</view>
+           <view style='padding-bottom:20rpx;'><span class='font-logo2' style='background-color:rgb(247, 33, 200);'>领</span>领3元券(在线支付专享)</view>
+           <view style='padding-bottom:20rpx;'><span class='font-logo2' style='background-color:#ffc640;'>首</span>新用户立减16元(在线支付专享)</view>
+            </view>
+          </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!--  -->
+</scroll-view>

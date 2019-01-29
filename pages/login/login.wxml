@@ -1,0 +1,37 @@
+<view>
+  <view class='logo'>
+    <image src='../../images/logo11.jpg'></image>
+  </view>
+  <view style='padding:0 25rpx;'>
+    <button class="weui-btn" type="primary" bindtap="chose_mask" >微信登录</button>
+    <view class='logo1'>
+      <span>手机号登录/</span>
+      <span>注册</span>
+    </view>
+  </view>
+  <view class="mask {{shopcar_switch==false?'mask-select':''}} "></view>
+  <view class="mask_ {{shopcar_switch==false?'mask_select1':''}} ">
+    <view style='padding:26rpx;'>
+      <view class='mask-title'>
+        <image src='../../images/yuewei.png'></image>
+        <span style='font-weight:600;'>悦微技术</span>
+        <span>申请获得</span>
+      </view>
+      <view class='mask-head'>
+        你的手机号码
+      </view>
+      <view class='mask-view1'>
+        {{user.phonenumber}}
+        <span>微信绑定号码</span>
+        <image src='../../images/对勾.png'></image>
+      </view>
+      <view class='mask-view2'>
+        <span>使用其他手机号码</span>
+      </view>
+      <view class='mask-bt'>
+      <button class='mask-bt1' bindtap='close_mask'>拒绝</button>
+      <button class='mask-bt2' bindtap='close_mask1'>允许</button>
+      </view>
+    </view>
+  </view>
+</view>

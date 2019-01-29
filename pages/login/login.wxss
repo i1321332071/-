@@ -1,0 +1,115 @@
+.logo{
+  text-align: center;
+line-height: 21
+}
+.logo image{
+  vertical-align: middle;
+    height: 92px;
+    width: 200px;
+}
+.logo1{
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 33rpx;
+  color:#4b7eb4;
+}
+.mask{
+  z-index:-1;
+ opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(63, 62, 62, 0.6);
+  transition: opacity 0.3s linear,z-index 0.3s;
+}
+.mask-select{
+ opacity: 1;
+ z-index: 999;
+}
+.mask_{
+  position:fixed;
+bottom: -50%;
+z-index: 99999;
+background-color: white;
+width:100%;
+height:47%;
+transition:bottom 0.5s, transform 1s;
+}
+.mask_select1{
+  bottom: 0;
+}
+.mask-title image{
+height:36rpx;
+width:36rpx;
+vertical-align:middle;
+
+}
+.mask-title span{
+  vertical-align:middle;
+font-size:28rpx;
+margin-left:10rpx;
+}
+.mask-head{
+  font-weight:600;
+font-size:37rpx;
+margin:13px 0;
+}
+.mask-view1{
+  border-top: 1rpx solid #e2dddd;
+  border-bottom: 1rpx solid #e2dddd;
+  padding: 20rpx 0;
+  font-size:28rpx;
+
+}
+.mask-view1 span{
+  color: #8a8a8a
+}
+.mask-view1 image{
+width:30rpx;
+height:30rpx;
+margin-right:15rpx;
+margin-top:5rpx;
+float:right;
+
+}
+.mask-view2 span{
+  margin: 13px 0;
+    font-size:28rpx;
+    color:#4b7eb4;
+}
+.mask-bt{
+  display:inline-block;
+width:100%;
+text-align:center;
+margin:40px 0;
+
+}
+.mask-bt1{
+  width:47%;
+display:inline-block;
+margin-right:5%;
+height:75rpx;
+line-height:2.4;
+
+}
+.mask-bt2{
+  width:47%;
+display:inline-block;
+height:75rpx;
+line-height:2.4;
+color: white;
+background-color: #3cc51f;
+}
+.mask-bt1::after{
+  border: none
+}
+.mask-bt2::after{
+  border: none
+}
+.mask-bt2:active{
+  color:rgba(255, 255, 255, 0.6);
+background-color:#179B16;
+
+}

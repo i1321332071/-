@@ -1,0 +1,13 @@
+<view>
+<block wx:for="{{goods}}" wx:key=''>
+<view style='display:inline-block;width:100%;'>
+<view class='view1'>{{item.name}}</view>
+<view class='view2'>count：{{item.count}}</view>
+<view class='view3'>id：{{item.id}}</view>
+
+</view>
+</block>
+<view class='bt'>
+<view class='bt_view'>去支付，￥{{totalprice}}</view>
+</view>
+</view>

@@ -1,0 +1,50 @@
+<!--pages/order/order.wxml-->
+<view class='order'>
+  <!-- 头部 -->
+  <view class='header'>
+    <block wx:if="{{!user}}">
+      <block></block>
+      <image class='userinfo-img1' src='../../images/my-selected.png'></image>
+      <span>
+        <button  data-e='123' bindtap='gologin'>登录</button>
+      </span>
+      <span>
+        <button bindtap='goregist'>注册</button>
+      </span>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-img2" src="{{user.user_head_portrait}}" mode="cover"></image>
+      <view class='userinfo-nickname'>
+        <text class="userinfo-text">明媚动人的火箭头</text>
+        <text class="userinfo-text">{{user.phonenumber}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 内容 -->
+  <view class='content'>
+    <view class='content_li'>
+      <image src='../../images/红包.png'></image>美团红包
+      <text class='text1'>1</text>
+      <text class='text2'>张</text>
+    </view>
+    <view class='content_li'>
+      <image src='../../images/卡券.png'></image>商家代金券
+      <text class='text1'>4</text>
+      <text class='text2'>张</text>
+    </view>
+    <view class='content_li' bindtap='gomylocation'>
+      <image src='../../images/address.png'></image>我的地址</view>
+    <view style='padding-bottom:14rpx;background-color:white;margin-bottom:3rpx;padding-top:8rpx;'>
+      <button open-type="contact" bindcontact="handleContact" class='content_bt'>
+        <image class='image1' src='../../images/客服.png'></image>客服中心</button>
+    </view>
+    <view class='content_li'>
+      <image src='../../images/帮助.png'></image>帮助和反馈</view>
+    <view class='content_li'>
+      <image src='../../images/用户协议.png'></image>协议和说明</view>
+    <view class='content_li'>
+      <image src='../../images/手机.png'></image>修改手机号</view>
+  </view>
+  <!-- 退出 -->
+  <view class='signout' bindtap='removelogin'>退出账号</view>
+</view>

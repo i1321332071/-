@@ -1,0 +1,16 @@
+<view class='loginbp'>
+  <view class='bp-view1'>
+    <view style='float:right;font-size:24rpx;line-height:3;' class="{{textflag==true?'textflag':'textflag1'}}">
+    <!-- 获取验证码 -->
+    <view bindtap='timeout' >{{counttext}}</view>
+
+    </view>
+    <input type='number' maxlength='11' bindinput='getphone' placeholder="请输入手机号码"></input>
+  </view>
+  <view class='bp-view1'>
+   <input type='number' maxlength='6' bindinput='getcheck' placeholder="请输入验证码"></input>
+  </view>
+ 
+  <button class=" {{btflag==true?'btflag':'bp-bt'}}" bindtap='login'>登录</button>
+ 
+</view>

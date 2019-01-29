@@ -1,0 +1,114 @@
+<!--pages/my/my.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: 4%; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <!-- 全部订单 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">         
+            <block wx:for="{{allorderlist}}" wx:key="">
+             <view class='ordercard' >
+              <!-- 标题 -->
+              <view></view>
+              <view class='order-head'>
+                <image src='{{item.img}}' />
+                <view class='order-title'>
+                  <span class='order-name'>{{item.storename}}</span>
+                </view>
+                <span class='order-state'>订单{{item.state}}</span>
+              </view>
+              <!-- list -->
+              <block wx:for="{{item.list}}" wx:for-item='one' wx:key="">
+                <view class='order-commoditylist' bindtap='goorderdetails' data-orderid='{{item.id}}'>
+                  <span>{{one.name}}</span>
+                  <text>×{{one.count}}</text>
+                </view>
+              </block>
+              <!-- 总价 -->
+              <view class='order-totalprice'>
+                共{{item.list.length}}件商品，
+                <text class='textblack'>实付￥{{item.price}}</text>
+              </view>
+              <view class='order-bt'  >
+                <span class='span1' bindtap='goorderdetails' data-orderid='{{item.id}}'>订单详情</span>
+                <span class='span2' bindtap='rebuy' data-storeid='{{item.storeid}}' data-storename='{{item.storename}}'>再来一单</span>
+              </view>
+              <!-- 再来一单 -->
+               </view>
+            </block>
+        </view>
+        <!-- 待评价 -->
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view class='ordercard'>
+            <block wx:for="{{orderbyevaluate}}" wx:key="">
+              <!-- 标题 -->
+              <view class='order-head'>
+                <image src='{{item.img}}' />
+                <view class='order-title'>
+                  <span class='order-name'>{{item.storename}}</span>
+                </view>
+                <span class='order-state'>订单{{item.state}}</span>
+              </view>
+               <!-- list -->
+              <block wx:for="{{item.list}}" wx:for-item='one' wx:key="">
+                <view class='order-commoditylist'>
+                  <span>{{one.name}}</span>
+                  <text>×{{one.count}}</text>
+                </view>
+              </block>
+              <!-- list -->
+              <view class='order-commoditylist'>
+                <span style='display:block;'>{{item.date}}</span>
+                <span style='width: 65%;'>由商家提供服务</span>
+                <text class='textblack'>实付￥{{item.price}}</text>
+              </view>
+              <view class='order-bt'>
+                <span bindtap="goevaluated" class='span1' data-orderid='{{item.id}}'>去评价</span>
+                <span bindtap="goevaluated" class='span2' data-storeid='{{item.storeid}}' data-storename='{{item.storename}}'>再来一单</span>
+              </view>
+              <!-- 再来一单 -->
+            </block>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+          <view class='ordercard'>
+            <block wx:for="{{orderbyrefund}}" wx:key=''>
+              <!-- 标题 -->
+              <view class='order-head'>
+                <image src='{{item.img}}' />
+                <view class='order-title'>
+                  <span class='order-name'>{{item.storename}}</span>
+                </view>
+                <span class='order-state'>订单{{item.state}}</span>
+              </view>
+                <!-- list -->
+              <block wx:for="{{item.list}}" wx:for-item='one' wx:key="">
+                <view class='order-commoditylist'>
+                  <span>{{one.name}}</span>
+                  <text>×{{one.count}}</text>
+                </view>
+              </block>
+              <!-- list -->
+              <view class='order-commoditylist'>
+                <span style='width: 65%;'>{{item.date}}</span>
+                <text class='textblack'>退款￥{{item.price}}</text>
+              </view>
+              <view class='order-bt' >
+              <span class='span1' bindtap="goevaluated" data-orderid='{{item.id}}'>去评价</span>
+                <span class='span2' data-orderid='{{item.id}}' bindtap='goorderdetails'>订单详情</span>
+              </view>
+              <!-- 再来一单 -->
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

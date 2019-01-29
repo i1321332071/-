@@ -1,0 +1,26 @@
+.loginbp{
+  padding: 86rpx;
+  font-size: 40rpx;
+}
+.bp-view1{
+  padding:30rpx 0;
+  border-bottom:1rpx solid #f3f1f1;
+
+}
+.bp-bt{
+  margin-top: 70rpx;
+  background-color:#f3f1f1;
+color: #bdbaba
+}
+
+.textflag{
+  color: #FFC640
+}
+.textflag1{
+  color: #8a8a8a;
+}
+.btflag{
+  margin-top: 70rpx;
+  color: black;
+  background-color: #FFC640
+}
