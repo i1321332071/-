@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/logs/logs",
+    "pages/my/my",
+    "pages/order/order",
+    "pages/location/location",
+    "pages/search/search",
+    "pages/scroll/scroll",
+    "pages/evaluated/evaluated",
+    "pages/orderdetails/orderdetails",
+    "pages/store/store",
+    "pages/settlement/settlement",
+    "pages/mylocation/mylocation",
+    "pages/addlocation/addlocation",
+    "pages/choselocation/choselocation",
+    "pages/deletelocation/deletelocation",
+    "pages/login/login",
+    "pages/loginbyphone/loginbyphone",
+    "pages/archives/archives"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "美团外卖",
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "color": "#8a8a8a",
+        "selectedColor": "#FFC640",
+        "selectedIconPath": "images/home-selected.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "color": "#8a8a8a",
+        "selectedColor": "#FFC640",
+        "iconPath": "images/order.png",
+        "selectedIconPath": "images/order-selected.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "个人",
+        "color": "#8a8a8a",
+        "selectedColor": "#FFC640",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-selected.png"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息只用于小程序位置获取"
+    }
+  }
+}
