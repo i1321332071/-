@@ -1,0 +1,19 @@
+<template name='sort_list'>
+<!-- <view bindtap='active' class="{{this.data.isChecked?'is_checked':'normal'}}">
+
+</view> -->
+<view class='sort-list'>
+<view class="sort {{selected == 1?'sort-active':''}}" bindtap='onOverallTag' data-index="1">{{sortSelected}}
+<image src='../../images/select.png' style="width:20rpx;height:20rpx;"></image>
+</view>
+<view class="sort {{selected == 2?'sort-active':''}}" bindtap='onTapTag'data-index="2">销量高</view>
+<view class="sort {{selected == 3?'sort-active':''}}" bindtap='onTapTag' data-index="3">速度快</view>
+<view class="sort {{selected == 4?'sort-active':''}}" bindtap='onTapTag' data-index="4">减配送费</view>
+<view class="sort {{selected == 5?'sort-active':''}}" bindtap='onFilter'data-index="5">
+筛选
+<image src='../../images/screen.png' style="width:20rpx;height:20rpx;" wx:if='{{conditioncount<1}}'></image>
+
+<view wx:else style='display:inline-block;background-color:red;color:white;width:28rpx;border-radius:50%;padding:2rpx;'>{{conditioncount}}</view>
+</view>
+</view>
+</template>
